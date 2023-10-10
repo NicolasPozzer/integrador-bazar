@@ -2,6 +2,7 @@ package com.ejer.integradorbazar.service;
 
 import com.ejer.integradorbazar.model.Producto;
 import com.ejer.integradorbazar.repository.IProductoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,14 +11,11 @@ import java.util.List;
 public class ProductoService implements IProductoService{
 
     /*Primordial la Inyeccion de Dependencia*/
+    @Autowired
     private IProductoRepository productRepo;
     /*--------------------------------------*/
 
 
-    @Override
-    public void saveProducto(Producto product) {
-        productRepo.save(product);
-    }
 
     @Override
     public List<Producto> getProductos() {
@@ -27,26 +25,31 @@ public class ProductoService implements IProductoService{
     }
 
     @Override
-    public Producto findProducto(Long id) {
+    public void saveProducto(Producto product) {
+        productRepo.save(product);
+    }
 
-        Producto product = productRepo.findById(id).orElse(null);
+    @Override
+    public Producto findProducto(Long codigo_producto) {
+
+        Producto product = productRepo.findById(codigo_producto).orElse(null);
         return product;
     }
 
     @Override
-    public void deleteProducto(Long id) {
-        productRepo.deleteById(id);
+    public void deleteProducto(Long codigo_producto) {
+        productRepo.deleteById(codigo_producto);
     }
 
     @Override
-    public void editProducto(Long id, String nuevoNombre,
+    public void editProducto(Long codigo_producto, String nuevoNombre,
                              String nuevaMarca, Double nuevoCosto,
                              Double nuevaCantidad_Disponible) {
 
         //codigo
 
         /*Primero obtenemos los datos actuales del obj.*/
-        Producto product = this.findProducto(id);
+        Producto product = this.findProducto(codigo_producto);
         /*Producto viene -> con los valores originales desde la db*/
 
         //Entonces ahora seteamos los nuevos parametros a modificar

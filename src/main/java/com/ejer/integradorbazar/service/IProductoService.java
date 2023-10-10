@@ -6,25 +6,29 @@ import java.util.List;
 
 public interface IProductoService {
 
+    /*==============================================================
+    *           Declaramos todos los metodos CRUD Abstactos
+    *           ya que es una interfaz y Siempre van
+    *           metodos abstractos!
+    ================================================================*/
+
+    /*Lista de Productos*/
+    public List<Producto> getProductos();
 
     /*Alta*/
     public void saveProducto(Producto product);
 
 
-    /*Lista de Productos*/
-    public List<Producto> getProductos();
-
-
     /*Lectura de un solo Producto*/
-    public Producto findProducto(Long id);
+    public Producto findProducto(Long codigo_producto);
 
 
     /*Eliminar un Producto*/
-    public void deleteProducto(Long id);
+    public void deleteProducto(Long codigo_producto);
 
 
     /*Edicion/Modificacion*/
-    public void editProducto(Long id, String nuevoNombre,
+    public void editProducto(Long codigo_producto, String nuevoNombre,
                              String nuevaMarca, Double nuevoCosto,
                              Double nuevaCantidad_Disponible);
 
