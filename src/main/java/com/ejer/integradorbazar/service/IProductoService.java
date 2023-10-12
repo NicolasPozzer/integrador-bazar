@@ -35,4 +35,9 @@ public interface IProductoService {
 
 
     public void editProducto(Producto produ);
+
+
+    /*Lista de Productos*/
+    public List<Producto> menor_a_5();
+
 }

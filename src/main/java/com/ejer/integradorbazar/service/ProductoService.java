@@ -5,6 +5,7 @@ import com.ejer.integradorbazar.repository.IProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -72,6 +73,27 @@ public class ProductoService implements IProductoService{
         this.saveProducto(product);
     }
 
+    @Override
+    public List<Producto> menor_a_5() {
+        Double cant;
+
+        List<Producto> listaProductos = this.getProductos();
+        List<Producto> listaMenores = new ArrayList<>();
+
+
+        for(Producto product : listaProductos){
+            cant = product.getCantidad_disponible();
+
+            if(cant <= 5){
+                listaMenores.add(product);
+            }
+
+        }
+
+        return listaMenores;
+    }
 
 
 }
+
+

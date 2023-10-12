@@ -77,4 +77,9 @@ public class ProductoController {
         return "Curso editado correctamente";
     }
 
+    @GetMapping("/productos/falta_stock")
+    public List<Producto> menor_a_5(){
+        return productServ.menor_a_5();
+    }
+
 }
