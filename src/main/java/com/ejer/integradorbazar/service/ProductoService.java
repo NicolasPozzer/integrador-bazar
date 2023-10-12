@@ -41,16 +41,16 @@ public class ProductoService implements IProductoService{
         productRepo.deleteById(codigo_producto);
     }
 
-    @Override
+    /*@Override
     public void editProducto(Long codigo_producto, String nuevoNombre,
                              String nuevaMarca, Double nuevoCosto,
                              Double nuevaCantidad_Disponible) {
 
         //codigo
 
-        /*Primero obtenemos los datos actuales del obj.*/
+        *//*Primero obtenemos los datos actuales del obj.*//*
         Producto product = this.findProducto(codigo_producto);
-        /*Producto viene -> con los valores originales desde la db*/
+        *//*Producto viene -> con los valores originales desde la db*//*
 
         //Entonces ahora seteamos los nuevos parametros a modificar
         product.setNombre(nuevoNombre);
@@ -58,11 +58,18 @@ public class ProductoService implements IProductoService{
         product.setCosto(nuevoCosto);
         product.setCantidad_disponible(nuevaCantidad_Disponible);
 
-        /*Ahora pasamos los nuevos datos a la db guardandolos de
-        * la siguiente manera: */
+        *//*Ahora pasamos los nuevos datos a la db guardandolos de
+        * la siguiente manera: *//*
         this.saveProducto(product); //Recibe "ESTE" obj. y lo manda a la db.
 
 
+    }*/
+
+    @Override
+    public void editProducto(Producto product) {
+
+
+        this.saveProducto(product);
     }
 
 

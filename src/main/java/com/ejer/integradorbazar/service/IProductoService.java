@@ -28,10 +28,11 @@ public interface IProductoService {
 
 
     /*Edicion/Modificacion*/
-    public void editProducto(Long codigo_producto, String nuevoNombre,
+    /*public void editProducto(Long codigo_producto, String nuevoNombre,
                              String nuevaMarca, Double nuevoCosto,
-                             Double nuevaCantidad_Disponible);
+                             Double nuevaCantidad_Disponible);*/
 
 
 
+    public void editProducto(Producto produ);
 }
