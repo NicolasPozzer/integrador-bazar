@@ -1,5 +1,6 @@
 package com.ejer.integradorbazar.controller;
 
+import com.ejer.integradorbazar.model.Producto;
 import com.ejer.integradorbazar.model.Venta;
 import com.ejer.integradorbazar.service.IVentaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,12 @@ public class VentaController {
 
         ventaServ.editVenta(vent);
         return "Venta |Editada| correctamente";
+    }
+
+    @GetMapping ("/ventas/productos-x-venta/{id}")
+    public List<Producto> productosPorVenta (@PathVariable Long id) {
+        return ventaServ.productosPorVenta(id);
+
     }
 
 }

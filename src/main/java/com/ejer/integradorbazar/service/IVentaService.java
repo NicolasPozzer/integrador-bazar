@@ -1,5 +1,6 @@
 package com.ejer.integradorbazar.service;
 
+import com.ejer.integradorbazar.model.Producto;
 import com.ejer.integradorbazar.model.Venta;
 
 import java.util.List;
@@ -15,5 +16,7 @@ public interface IVentaService {
     public Venta findVenta(Long id); // Buscar uno
 
     public void editVenta(Venta vent); // Editar/Modificar
+
+    public List<Producto> productosPorVenta(Long id);
 
 }

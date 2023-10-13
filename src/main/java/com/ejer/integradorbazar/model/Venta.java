@@ -1,6 +1,5 @@
 package com.ejer.integradorbazar.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,6 +38,8 @@ public class Venta {
         this.unCliente = unCliente;
     }
 }
+
+
 
 /*
 En donde cada venta posee una lista de productos y uno y solo un cliente asociado. Además
