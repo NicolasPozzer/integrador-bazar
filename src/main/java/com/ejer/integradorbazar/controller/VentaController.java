@@ -6,6 +6,7 @@ import com.ejer.integradorbazar.service.IVentaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -55,6 +56,11 @@ public class VentaController {
     public List<Producto> productosPorVenta (@PathVariable Long id) {
         return ventaServ.productosPorVenta(id);
 
+    }
+
+    @GetMapping ("/ventas/fecha/{fecha_venta}")
+    public double[] findVentaPorFecha(@PathVariable LocalDate fecha_venta){
+        return ventaServ.findVentaPorFecha(fecha_venta);
     }
 
 }

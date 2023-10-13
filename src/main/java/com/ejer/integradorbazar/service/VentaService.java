@@ -6,6 +6,7 @@ import com.ejer.integradorbazar.repository.IVentaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 @Service
@@ -57,6 +58,38 @@ public class VentaService implements IVentaService{
         }
 
         return lista;
+    }
+
+    /*Obtener la sumatoria del monto y tambien cantidad todal de ventas de un determinado dia*/
+    @Override
+    public double[] findVentaPorFecha(LocalDate fecha) {
+
+        Double acum = 0.0;
+        int cant = 0;
+
+        List <Venta> listaVentas = getVentas();
+        List<Producto> lista = new ArrayList<>();
+
+        for(Venta vent : listaVentas){
+
+            //Obtengo la lista con la fecha indicada
+            if(fecha.equals(vent.getFecha_venta())){
+                cant = cant + 1;
+                // Obtener la lista de productos de la venta
+                // y agregarla a la lista que vamos a devolver
+                lista.addAll(vent.getListaProductos());
+
+            }
+
+        }
+
+        for (Producto product : lista){
+            acum = acum + product.getCosto();
+        }
+
+        double[] resultado = {cant, acum};
+
+        return resultado;
     }
 
 

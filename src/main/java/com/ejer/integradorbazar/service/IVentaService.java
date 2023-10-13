@@ -3,6 +3,7 @@ package com.ejer.integradorbazar.service;
 import com.ejer.integradorbazar.model.Producto;
 import com.ejer.integradorbazar.model.Venta;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IVentaService {
@@ -18,5 +19,8 @@ public interface IVentaService {
     public void editVenta(Venta vent); // Editar/Modificar
 
     public List<Producto> productosPorVenta(Long id);
+
+    public double[] findVentaPorFecha(LocalDate fecha);
+
 
 }
