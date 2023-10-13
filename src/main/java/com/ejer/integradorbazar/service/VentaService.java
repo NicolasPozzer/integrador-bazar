@@ -1,5 +1,6 @@
 package com.ejer.integradorbazar.service;
 
+import com.ejer.integradorbazar.dto.VentaDTO;
 import com.ejer.integradorbazar.model.Producto;
 import com.ejer.integradorbazar.model.Venta;
 import com.ejer.integradorbazar.repository.IVentaRepository;
@@ -80,7 +81,6 @@ public class VentaService implements IVentaService{
                 lista.addAll(vent.getListaProductos());
 
             }
-
         }
 
         for (Producto product : lista){
@@ -92,5 +92,47 @@ public class VentaService implements IVentaService{
         return resultado;
     }
 
+    @Override
+    public VentaDTO ventaDTOMayor() {
+        /*Primero debemos acumular la venta con sus productos para
+        * obtener la venta con el monto mas alto*/
+
+        Double mayor = 0.0;
+
+
+        //Declaramos el obj. vacio
+        VentaDTO ventaDTO = new VentaDTO();
+
+        //lista de ventas
+        List <Venta> listaVentas = getVentas();
+        List <Producto> listaProductos = new ArrayList<>();
+
+        //for de lista para obtener la venta mas alta
+        for (Venta vent : listaVentas){
+            int cont = 0;
+            Double acum = 0.0;
+
+            listaProductos.addAll(vent.getListaProductos());
+
+            for (Producto product : listaProductos){
+                cont = cont + 1;
+                acum = acum + product.getCosto();
+            }
+
+            if (acum > mayor){
+
+                ventaDTO.setCodigo_venta(vent.getCodigo_venta());
+                ventaDTO.setTotal(acum);
+                ventaDTO.setCantidad_productos(cont);
+                ventaDTO.setNombre_cliente(vent.getUnCliente().getNombre());
+                ventaDTO.setApellido_cliente(vent.getUnCliente().getApellido());
+
+            }
+        }
+
+        return ventaDTO;
+    }
 
 }
+
+

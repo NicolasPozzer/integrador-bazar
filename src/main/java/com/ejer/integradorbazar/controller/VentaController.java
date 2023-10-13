@@ -1,5 +1,6 @@
 package com.ejer.integradorbazar.controller;
 
+import com.ejer.integradorbazar.dto.VentaDTO;
 import com.ejer.integradorbazar.model.Producto;
 import com.ejer.integradorbazar.model.Venta;
 import com.ejer.integradorbazar.service.IVentaService;
@@ -61,6 +62,11 @@ public class VentaController {
     @GetMapping ("/ventas/fecha/{fecha_venta}")
     public double[] findVentaPorFecha(@PathVariable LocalDate fecha_venta){
         return ventaServ.findVentaPorFecha(fecha_venta);
+    }
+
+    @GetMapping ("/ventas/mayor")
+    public VentaDTO ventaDTOMayor(){
+        return ventaServ.ventaDTOMayor();
     }
 
 }

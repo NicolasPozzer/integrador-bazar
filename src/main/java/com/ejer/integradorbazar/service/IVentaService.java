@@ -1,5 +1,6 @@
 package com.ejer.integradorbazar.service;
 
+import com.ejer.integradorbazar.dto.VentaDTO;
 import com.ejer.integradorbazar.model.Producto;
 import com.ejer.integradorbazar.model.Venta;
 
@@ -22,5 +23,6 @@ public interface IVentaService {
 
     public double[] findVentaPorFecha(LocalDate fecha);
 
+    public VentaDTO ventaDTOMayor();
 
 }
